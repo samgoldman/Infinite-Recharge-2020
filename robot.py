@@ -139,8 +139,7 @@ class MyRobot(wpi.TimedRobot):
             self.lift.stopMotor()
 
     def autonomusInit(self):
-        self.timer.reset()
-        self.timer.start()
+        self.robotInit() 
 
     def autonomusPeriodic(self):
         self.teleopPeriodic()
