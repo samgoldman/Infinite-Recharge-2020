@@ -1,3 +1,5 @@
+#Property of Gavin Burgess
+
 import ctre
 import wpilib as wpi
 import wpilib.drive
@@ -145,3 +147,4 @@ class MyRobot(wpi.TimedRobot):
 
 if __name__ == '__main__':
     wpilib.run(MyRobot)
+
