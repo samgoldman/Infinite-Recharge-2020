@@ -1,6 +1,7 @@
 import ctre
 import wpilib as wpi
 import wpilib.drive
+from wpilib.interfaces import GenericHID
 
 
 class MyRobot(wpi.TimedRobot):
