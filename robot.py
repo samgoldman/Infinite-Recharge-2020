@@ -10,6 +10,13 @@ class MyRobot(wpi.TimedRobot):
         self.leftMotor = wpi.SpeedControllerGroup(ctre.WPI_TalonSRX(7))
         self.rightMotor = wpi.SpeedControllerGroup(ctre.WPI_TalonSRX(22))
         self.drive = wpi.drive.DifferentialDrive(self.leftMotor, self.rightMotor)
+
+        #self.panelMotor = wpi.SpeedControllerGroup([ctre.WPI_TalonSRX([INSERT MOTOR NUM]))
+
+        #self.shooterMotor = wpi.SpeedControllerGroup([ctre.WPI_TalonSRX([INSERT MOTOR NUM]))
+
+        #self.intakeMotor = wpi.SpeedControllerGroup([ctre.WPI_TalonSRX([INSERT MOTOR NUM]))
+
         self.timer = wpilib.Timer()
 
         self.joystick = wpi.XboxController(1)
