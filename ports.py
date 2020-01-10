@@ -1,10 +1,8 @@
 talonPorts = {
     # Motors involved in moving the robot around the field
-    "leftChassisMotor": 22,
-    "rightChassisMotor": 7,
+    "leftChassisMotor": 1,
+    "rightChassisMotor": 2,
     
     # Intake Motor which spins the intake mechnaism to grab and store balls
-    "intakeMotor": 21,
-
-    
+    "intakeMotor": 10,
 }
