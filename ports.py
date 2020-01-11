@@ -6,3 +6,8 @@ talonPorts = {
     # Intake Motor which spins the intake mechnaism to grab and store balls
     "intakeMotor": 10,
 }
+
+controllerPorts = {
+    "driverController": 0,
+    "codriverController": 1
+}
