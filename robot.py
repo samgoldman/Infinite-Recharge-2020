@@ -8,8 +8,8 @@ class MyRobot(wpi.TimedRobot):
 
     def robotInit(self):
 
-        bToggle = false
-        aToggle = false
+        self.bToggle = False
+        self.aToggle = False
 
         self.leftMotor = wpi.SpeedControllerGroup(ctre.WPI_TalonSRX(7))
         self.rightMotor = wpi.SpeedControllerGroup(ctre.WPI_TalonSRX(15))
@@ -35,21 +35,21 @@ class MyRobot(wpi.TimedRobot):
     def teleopPeriodic(self):
         self.drive.arcadeDrive(self.joystick.getY()*3/4, self.joystick.getX()*3/4)
 
-        if(self.joystick.getBButton())
-            bToggle = !bToggle
+        if(self.joystick.getBButton()):
+            self.bToggle = not self.bToggle
 
-        if(self.joystick.getAButton())
-            aToggle = !aToggle
+        if(self.joystick.getAButton()):
+            self.aToggle = not self.aToggle
 
-        if(aToggle)
-            intakeMotor.set(.1)
-        else
-            intakeMotor.stopMotor()
+        if(self.aToggle):
+            self.intakeMotor.set(.1)
+        else:
+            self.intakeMotor.stopMotor()
 
-        if(bToggle)
-            intakeMotor.set(-.1)
-        else
-            intakeMotor.stopMotor()
+        if(self.bToggle):
+            self.intakeMotor.set(-.1)
+        else:
+            self.intakeMotor.stopMotor()
         
 
     def autonomousInit(self):
