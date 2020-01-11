@@ -14,7 +14,7 @@ class MyRobot(wpi.TimedRobot):
         self.leftMotor = wpi.SpeedControllerGroup(ctre.WPI_TalonSRX(7))
         self.rightMotor = wpi.SpeedControllerGroup(ctre.WPI_TalonSRX(15))
 
-        self.intakeMotor = ctre.WPI_TalonSRX(22)
+        self.intakeMotor = ctre.WPI_TalonSRX(18)
 
         self.drive = wpi.drive.DifferentialDrive(self.leftMotor, self.rightMotor)
 
@@ -25,9 +25,6 @@ class MyRobot(wpi.TimedRobot):
         #self.shooterMotorOne = wpi.SpeedControllerGroup([ctre.WPI_TalonSRX([INSERT MOTOR NUM]))
         #self.shooterMotorTwo = wpi.SpeedControllerGroup([ctre.WPI_TalonSRX([INSERT MOTOR NUM]))
 
-        #self.intakeMotorOne = wpi.SpeedControllerGroup([ctre.WPI_TalonSRX([INSERT MOTOR NUM]))
-        #self.intakeMotorTwo = wpi.SpeedControllerGroup([ctre.WPI_TalonSRX([INSERT MOTOR NUM]))
-
         self.timer = wpilib.Timer()
 
         self.joystick = wpi.XboxController(1)
@@ -35,11 +32,13 @@ class MyRobot(wpi.TimedRobot):
     def teleopPeriodic(self):
         self.drive.arcadeDrive(self.joystick.getY()*3/4, self.joystick.getX()*3/4)
 
-        if(self.joystick.getBButton()):
+        if(self.joystick.getBButtonPressed()):
             self.bToggle = not self.bToggle
+            self.aToggle = False
 
-        if(self.joystick.getAButton()):
+        if(self.joystick.getAButtonPressed()):
             self.aToggle = not self.aToggle
+            self.bToggle = False
 
         if(self.aToggle):
             self.intakeMotor.set(.1)
