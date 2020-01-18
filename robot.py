@@ -10,17 +10,18 @@ class MyRobot(wpi.TimedRobot):
     def robotInit(self):
 
         self.driveMethods = MethodsRobot.Drive()
-        self.shooterMethods = MethodsRobot.Shooter()
+        #self.shooterMethods = MethodsRobot.Shooter()
 
         self.timer = wpilib.Timer()
 
-        self.driverController = wpi.XboxController(ports.controllerPorts.get("driverContoller"))
-        self.codriverController = wpi.XboxController(ports.controllerPorts.get("codriverContoller"))
+        self.driverController = wpi.XboxController(ports.controllerPorts.get("driverController"))
+        #self.codriverController = wpi.XboxController(ports.controllerPorts.get("codriverContoller"))
 
         
     def teleopPeriodic(self):
-        self.driveMethods.basicDrive(self.driverController)
-        self.shooterMethods.intake()
+        #self.drive.arcadeDrive(.1, .1)
+        self.driveMethods.basicDrive(self.driverController.getX(), self.driverController.getY())
+        #self.shooterMethods.intake()
 
 
     def autonomousInit(self):
@@ -29,12 +30,12 @@ class MyRobot(wpi.TimedRobot):
 
     def autonomousPeriodic(self):
         self.teleopPeriodic()
-        
-        #if self.timer.get() < 2.0:
-        #    self.drive.arcadeDrive(-0.5, 0)  # Drive forwards at half speed
-        #else:
-        #    self.drive.arcadeDrive(0, 0)  # Stop robot
-        
+        '''
+        if self.timer.get() < 2.0:
+            self.drive.arcadeDrive(-0.5, 0)  # Drive forwards at half speed
+        else:
+            self.drive.arcadeDrive(0, 0)  # Stop robot
+        '''
 
 
 if __name__ == '__main__':
