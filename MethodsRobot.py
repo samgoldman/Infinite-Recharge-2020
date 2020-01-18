@@ -19,26 +19,25 @@ class Drive():
         self.controllerYValue = y
         self.drive.arcadeDrive(self.controllerYValue, self.controllerXValue)
     
-'''
+
 class Shooter():
-    def shooterInit(self, robot, controller):
+    def __init__(self):
     
-        Intake Components and Variables
-        self.intakeMotor = ctre.WPI_TalonSRX(ports.talonPorts.get("intkeMotor"))
+        #Intake Components and Variables
+        self.intakeMotor = ctre.WPI_TalonSRX(ports.talonPorts.get("intakeMotor"))
         self.bToggle = False
         self.aToggle = False
 
-        if(not( type(controller) is None) and isinstance(controller, wpi.XboxController)):
-            self.driverController = controller
-        else:
-            print("No controller detected")
+        #Shooting Components and Variables
+        self.shootingMotor1 = ctre.WPI_TalonSRX(ports.talonPorts.get("shootingMotor1"))
+        self.shootingMotor2 = ctre.WPI_TalonSRX(ports.talonPorts.get("shootingMotor2"))
 
-    def intake(self):
-        if(self.driverController.getBButtonPressed()):
+    def intake(self, bPress, aPress):
+        if(bPress):
             self.bToggle = not self.bToggle
             self.aToggle = False
 
-        if(self.driverController.getAButtonPressed()):
+        if(bPress):
             self.aToggle = not self.aToggle
             self.bToggle = False
 
@@ -51,5 +50,8 @@ class Shooter():
             self.intakeMotor.set(-.1)
         else:
             self.intakeMotor.stopMotor()
-'''
 
+    def shooting(self, triggerPress):
+        if(triggerPress):
+            self.shootingMotor1.set(.9)
+            self.shootingMotor2.set(.9)
