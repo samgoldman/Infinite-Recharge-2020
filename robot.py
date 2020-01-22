@@ -21,7 +21,7 @@ class MyRobot(wpi.TimedRobot):
     def teleopPeriodic(self):
         self.driveMethods.basicDrive(self.driverController.getX(), self.driverController.getY())
         self.shooterMethods.intake(self.driverController.getBackButtonPressed(), self.driverController.getAButtonPressed())
-        self.shooterMethods.shooting(self.driverController.getYButtonPressed())
+        self.shooterMethods.shooting(self.driverController.getTriggerAxis())
 
 
     def autonomousInit(self):

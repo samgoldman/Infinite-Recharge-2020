@@ -52,6 +52,7 @@ class Shooter():
             self.intakeMotor.stopMotor()
 
     def shooting(self, triggerPress):
-        if(triggerPress):
+        if(triggerPress == 1):
             self.shootingMotor1.set(.9)
             self.shootingMotor2.set(.9)
+        
