@@ -11,6 +11,7 @@ class MyRobot(wpi.TimedRobot):
 
         self.driveMethods = MethodsRobot.Drive()
         self.shooterMethods = MethodsRobot.Shooter()
+        self.controllerMethods = MethodsRobot.Controller()
         #self.controllerMethods = MethodsRobot.Controller()
 
         self.timer = wpilib.Timer()
@@ -23,7 +24,9 @@ class MyRobot(wpi.TimedRobot):
         self.driveMethods.basicDrive(self.driverController.getX(), self.driverController.getY())
         self.shooterMethods.intake(self.driverController.getBButtonPressed(), self.driverController.getAButtonPressed())
         self.shooterMethods.shooting(self.driverController.getTriggerAxis(GenericHID.Hand.kRight))
+        print(self.controllerMethods.currentColor)
         #self.controllerMethods.spinner(self.driveController.getBumperPressed(GenericHID.Hand.kLeft), self.driveController.getBumperPressed(GenericHID.Hand.kRight))
+
 
     def autonomousInit(self):
         self.timer.reset()

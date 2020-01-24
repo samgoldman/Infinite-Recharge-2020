@@ -3,6 +3,7 @@ import wpilib as wpi
 from wpilib.drive import DifferentialDrive
 from wpilib.interfaces import GenericHID
 import ports
+from rev.color import ColorSensorV3
 
 class Drive():
     def __init__(self):
@@ -10,6 +11,8 @@ class Drive():
         self.leftMotor = wpi.SpeedControllerGroup(ctre.WPI_TalonSRX(ports.talonPorts.get("leftChassisMotor")))
         self.rightMotor = wpi.SpeedControllerGroup(ctre.WPI_TalonSRX(ports.talonPorts.get("rightChassisMotor")))
         self.drive = wpi.drive.DifferentialDrive(self.leftMotor, self.rightMotor)
+        #self.colorSensor = ColorSensorV3(wpi.I2C.Port.kOnboard)
+
 
     def basicDrive(self, x, y):
         if self.drive is None:
@@ -59,13 +62,21 @@ class Shooter():
             self.shootingMotor1.stopMotor()
             self.shootingMotor2.stopMotor()
 
-'''     
+
 class Controller():
     def __init__(self):
+        self.colorSensor = ColorSensorV3(wpi.I2C.Port.kOnboard)
         self.controllerMotor = ctre.WPI_TalonSRX(ports.talonPorts.get("controllerMotor"))
         self.lToggle = False
         self.rToggle = False
-        self.currentColor = None #Variable to determine what the current color sensed by the sensor is
+        self.currentColor = self.colorSensor.getColor() #Variable to determine what the current color sensed by the sensor is
+        self.ir = self.colorSensor.getIR()
+        wpi.SmartDashboard.putNumber("Red", self.currentColor.red)
+        wpi.SmartDashboard.putNumber("Green", self.currentColor.green)
+        wpi.SmartDashboard.putNumber("Blue", self.currentColor.blue)
+        wpi.SmartDashboard.putNumber("IR", self.ir)
+        self.colorProximity = self.colorSensor.getProximity()
+        wpi.SmartDashboard.putNumber("Proximity", self.colorProximity)
         self.colorCount = None #Variable to count how many times the color has changed, may also be used to count how many times the wheel has been spun
         self.controllerCheck = False #False: # of spins or on certian color reqs not met, keep going True: conditions met, stop
         
@@ -84,8 +95,7 @@ class Controller():
             pass
 
         #Keep spinning CW until toggled off by pressing the same bumper a second time
-        if(self.rToggle and controllerCheck):
+        if(self.rToggle and self.controllerCheck):
             self.controllerMotor.set(.1)
         else:
             self.controllerMotor.stopMotor()
-'''
