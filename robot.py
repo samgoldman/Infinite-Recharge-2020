@@ -14,17 +14,17 @@ class MyRobot(wpi.TimedRobot):
         self.controllerMethods = MethodsRobot.Controller()
         #self.controllerMethods = MethodsRobot.Controller()
 
-        self.timer = wpilib.Timer()
+        self.timer = wpi.Timer()
 
         self.driverController = wpi.XboxController(ports.controllerPorts.get("driverController"))
         #self.codriverController = wpi.XboxController(ports.controllerPorts.get("codriverContoller"))
 
         
     def teleopPeriodic(self):
-        self.driveMethods.basicDrive(self.driverController.getX(), self.driverController.getY())
+        self.driveMethods.basicDrive(self.driverController.getXButton(), self.driverController.getYButton())
         self.shooterMethods.intake(self.driverController.getBButtonPressed(), self.driverController.getAButtonPressed())
-        self.shooterMethods.shooting(self.driverController.getTriggerAxis(GenericHID.Hand.kRight))
-        print(self.controllerMethods.currentColor)
+        self.shooterMethods.shooting(self.driverController.getLeftTriggerAxis())
+        # print(self.controllerMethods.colorSensor.isConnected(), self.controllerMethods.colorSensor.getColor())
         #self.controllerMethods.spinner(self.driveController.getBumperPressed(GenericHID.Hand.kLeft), self.driveController.getBumperPressed(GenericHID.Hand.kRight))
 
     def autonomousInit(self):
