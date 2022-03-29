@@ -12,12 +12,11 @@ class MyRobot(wpi.TimedRobot):
         self.driveMethods = MethodsRobot.Drive()
         self.shooterMethods = MethodsRobot.Shooter()
         self.controllerMethods = MethodsRobot.Controller()
-        #self.controllerMethods = MethodsRobot.Controller()
 
         self.timer = wpi.Timer()
 
         self.driverController = wpi.XboxController(ports.controllerPorts.get("driverController"))
-        #self.codriverController = wpi.XboxController(ports.controllerPorts.get("codriverContoller"))
+        self.codriverController = wpi.XboxController(ports.controllerPorts.get("codriverController"))
 
         
     def teleopPeriodic(self):

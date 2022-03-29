@@ -1,0 +1,12 @@
+name: Test
+
+on: [push]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run:
+          - pip install -r requirements.txt
+          - python robot.py test
