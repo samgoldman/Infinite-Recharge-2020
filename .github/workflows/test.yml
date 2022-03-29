@@ -3,10 +3,10 @@ name: Test
 on: [push]
 
 jobs:
-  greeting:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: test
         run: |
-          - pip install -r requirements.txt
-          - python robot.py test
+          pip install -r requirements.txt
+          python robot.py test
