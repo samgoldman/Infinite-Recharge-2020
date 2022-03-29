@@ -20,6 +20,5 @@ jobs:
           pip install -r requirements.txt    
       - name: Robotpy tests
         timeout-minutes: 1
-        continue-on-error: True
         run: |
           python robot.py test
