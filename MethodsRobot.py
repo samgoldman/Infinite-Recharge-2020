@@ -3,7 +3,7 @@ import wpilib as wpi
 from wpilib.drive import DifferentialDrive
 from wpilib.interfaces import GenericHID
 import ports
-from rev.color import ColorSensorV3
+# from rev.color import ColorSensorV3
 
 class Drive():
     def __init__(self):
@@ -65,7 +65,7 @@ class Shooter():
 
 class Controller():
     def __init__(self):
-        self.colorSensor = ColorSensorV3(wpi.I2C.Port.kOnboard)
+        # self.colorSensor = ColorSensorV3(wpi.I2C.Port.kOnboard)
         self.controllerMotor = ctre.WPI_TalonSRX(ports.talonPorts.get("controllerMotor"))
         self.lToggle = False
         self.rToggle = False
