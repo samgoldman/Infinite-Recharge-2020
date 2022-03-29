@@ -7,8 +7,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: test
+      - name: Set up Python 3.9
+        timeout-minutes: 2
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        timeout-minutes: 5
         run: |
-          ls -al
-          pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt    
+      - name: Robotpy tests
+        timeout-minutes: 1
+        continue-on-error: True
+        run: |
           python robot.py test
