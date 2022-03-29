@@ -1,3 +1,6 @@
 __pycache__/
 *.whl
 *.tar.gz
+
+# maybe remove later for sim jsons
+*.json
